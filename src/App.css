@@ -85,9 +85,9 @@ a {
 }
 
 .left-menu {
-    background-color: #282c34;
     width: 30%;
     left: 0%;
+    overflow-y: scroll;
 }
 
 .chat-sec {
