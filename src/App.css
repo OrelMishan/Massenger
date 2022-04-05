@@ -82,3 +82,13 @@ a {
   font-size: 1.7vw;
 
 }
+.left-menu{
+  background-color: #282c34;
+  width: 30%;
+  float: left;
+}
+.chat-sec{
+  background-color: red;
+  width: 70%;
+  float: right;
+}
