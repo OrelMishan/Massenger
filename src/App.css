@@ -94,21 +94,31 @@ a {
     width: 70%;
     left: 30%;
     position: absolute;
-    background-color: #61dafb;
     height: 100%;
     top: 0%;
+    bottom: 0%;
 }
 
-.align {
+.chat-nav {
     text-align: center;
+    height: 8%;
 }
 
 .chat-pic {
+    margin-top: 2px;
     height: 40px;
     width: 40px;
     float: left;
 }
 .send-sec{
-    position: relative;
-
+    position: absolute;
+    bottom: 0%;
+    height: 20px;
+}
+.left-align{
+    float: right;
+}
+.send-input{
+    position: fixed;
+    bottom: 0%;
 }
