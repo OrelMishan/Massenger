@@ -36,3 +36,49 @@
     transform: rotate(360deg);
   }
 }
+html body {
+  background-image: url("BackgroundPic.jpg");
+
+}
+
+#app {
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  padding: 1%;
+  left: 15%;
+  width: 70%;
+  top: 13%;
+}
+
+#button {
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  width: 10%;
+  margin-top: 1%;
+  font-size: 1.3vw;
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+}
+
+#register {
+  text-align: center;
+  padding-top: 1%;
+  font-size: 1.3vw;
+
+}
+
+a {
+  color: cornflowerblue;
+}
+
+.test {
+  font-size: 1.3vw;
+
+}
+
+.big-text {
+  font-size: 1.7vw;
+
+}
