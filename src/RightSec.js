@@ -1,8 +1,14 @@
-function RightSec(){
-    return(
+import ChatNav from "./ChatNav";
+import ChatInput from "./ChatInput";
+
+function RightSec() {
+    return (
         <div className="chat-sec">
-            ffjjjjj<br/>fff
+            <ChatNav/>
+            <ChatInput/>
+
         </div>
     )
 }
+
 export default RightSec;
