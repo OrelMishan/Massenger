@@ -2,7 +2,7 @@ function LeftMenu() {
     return (
         <div className="left-menu">
 
-            <div className="list-group list-group-flush border-bottom scrollarea">
+            <div className=" list-group list-group-flush border-bottom scrollarea">
 
                 <nav className="navbar navbar-light bg-light">
                     <form className="form-inline">
@@ -19,7 +19,7 @@ function LeftMenu() {
                 </a>
                 <a href="#" className="list-group-item list-group-item-action py-3 lh-tight">
                     <div className="d-flex w-100 align-items-center justify-content-between">
-                        <strong className="mb-1">Name</strong>
+                        <strong className="mb-1">Yael</strong>
                         <small className="text-muted">side item</small>
                     </div>
                 </a>
@@ -55,13 +55,13 @@ function LeftMenu() {
                 </a>
                 <a href="#" className="list-group-item list-group-item-action py-3 lh-tight">
                     <div className="d-flex w-100 align-items-center justify-content-between">
-                        <strong className="mb-1">Name</strong>
+                        <strong className="mb-1">David</strong>
                         <small className="text-muted">side item</small>
                     </div>
                 </a>
                 <a href="#" className="list-group-item list-group-item-action py-3 lh-tight">
                     <div className="d-flex w-100 align-items-center justify-content-between">
-                        <strong className="mb-1">Name</strong>
+                        <strong className="mb-1">Orel</strong>
                         <small className="text-muted">side item</small>
                     </div>
                 </a>

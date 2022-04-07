@@ -85,15 +85,18 @@ a {
 }
 
 .left-menu {
+    position: fixed;
     width: 30%;
-    left: 0%;
+    left: 0px;
+    height: 100%;
     overflow-y: scroll;
 }
 
 .chat-sec {
     width: 70%;
     left: 30%;
-    position: absolute;
+    float: right;
+    position: fixed;
     background-color: #61dafb;
     height: 100%;
     top: 0%;
@@ -112,3 +115,30 @@ a {
     position: relative;
 
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+
+
+
+
+
