@@ -236,5 +236,9 @@ a {
     width: 5%;
     left: 5%;
     height: 100%;
+    top: 0%;
     border-radius: 0%;
+}
+#file{
+    visibility: hidden;
 }
