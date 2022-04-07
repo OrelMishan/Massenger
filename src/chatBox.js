@@ -1,6 +1,6 @@
 function ChatBox(){
     return(
-        <div className="chat-box">
+        <div className="chat-box scrollbar">
             <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
 
             <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>

@@ -130,8 +130,10 @@ a {
 }
 
 .send-input {
+    position: absolute;
     height: 100%;
-    width: 95%;
+    width: 85%;
+    right: 5%;
 }
 
 .send-bottom {
@@ -219,4 +221,20 @@ a {
     height: 80%;
     width: 7%;
     float: left;
+}
+
+.record-bottom {
+    position: absolute;
+    width: 5%;
+    left: 0%;
+    height: 100%;
+    border-radius: 0%;
+}
+
+.file-bottom {
+    position: absolute;
+    width: 5%;
+    left: 5%;
+    height: 100%;
+    border-radius: 0%;
 }
