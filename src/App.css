@@ -1,3 +1,4 @@
+
 .App {
     text-align: center;
 }
@@ -97,24 +98,51 @@ a {
     left: 30%;
     float: right;
     position: fixed;
-    background-color: #61dafb;
     height: 100%;
     top: 0%;
+    bottom: 0%;
 }
 
-.align {
+.chat-nav {
     text-align: center;
-}
+    height: 7%;
+    background-color: red;
+    }
 
 .chat-pic {
-    height: 40px;
-    width: 40px;
+    height: 100%;
     float: left;
 }
-.send-sec{
-    position: relative;
-
+.chat-box{
+    position: fixed;
+    top: 7%;
+    bottom: 7%;
+    background-color: darkmagenta;
+    width: 100%;
+    overflow-y: scroll;
 }
+
+.send-sec {
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+    height: 7%;
+}
+
+.send-input {
+    height: 100%;
+    width: 95%;
+}
+
+.send-bottom {
+    position: absolute;
+    width: 5%;
+    right: 0%;
+    height: 100%;
+    border-radius: 0%;
+}
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
