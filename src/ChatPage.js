@@ -5,7 +5,7 @@ import ChatBox from "./chatBox";
 
 function ChatPage() {
     return(
-        <div className="container-fluid">
+        <div>
             <LeftMenu/>
             <RightSec/>
         </div>

@@ -39,8 +39,8 @@
 }
 
 html body {
-    background-image: url("BackgroundPic.jpg");
 
+    background-color: white;
 }
 
 #app {
@@ -81,7 +81,7 @@ a {
 }
 
 .big-text {
-    font-size: 1.7vw;
+    font-size: 1.4vw;
 
 }
 
@@ -107,19 +107,19 @@ a {
     text-align: center;
     height: 7%;
     background-color: red;
-    }
+}
 
 .chat-pic {
     height: 100%;
     float: left;
 }
-.chat-box{
+
+.chat-box {
     position: fixed;
     top: 7%;
     bottom: 7%;
-    background-color: darkmagenta;
-    width: 100%;
-    overflow-y: scroll;
+    width: 70%;
+    overflow-y: auto;
 }
 
 .send-sec {
@@ -164,9 +164,59 @@ a {
 }
 
 
+.contact-pic {
+    position: absolute;
+    height: 70%;
+    width: 7%;
+    float: left;
+}
+
+.my-search {
+    top: 50%;
+    position: absolute;
+    height: 50%;
+}
 
 
-
-
-
-
+.lower-left {
+    position: absolute;
+    top: 14%;
+    width: 30%;
+    left: 0px;
+    height: 86%;
+    overflow-y: scroll;
+}
+.upper-left-main{
+    position: absolute;
+    height: 14%;
+    width: 30%;
+}
+.upper-left {
+    width: 100%;
+    position: absolute;
+    height: 50%;
+}
+.new-contact{
+    background-color: #f1f1f1;
+    float: right;
+    height: 60%;
+    width: 8%;
+}
+.date-text {
+    font-size: 0.7vw;
+}
+.message-peak-text {
+    font-size: 1vw;
+    margin-left: 20%;
+}
+.list-item{
+    position: absolute;
+    height: 10%;
+    width: 100%;
+}
+.my-photo{
+    position: relative;
+    height: 80%;
+    width: 7%;
+    float: left;
+}
