@@ -4,7 +4,7 @@ import UpperLeft from "./UpperLeft";
 function LeftMenu() {
 
     return (
-        <div>
+        <div className="left-menu">
             <UpperLeft/>
             <LowerLeft/>
         </div>
