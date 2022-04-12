@@ -1,54 +1,18 @@
-function ChatBox(){
-    return(
-        <div className="chat-box scrollbar">
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
+import Massege from "./massege";
 
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
+function ChatBox() {
 
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
+    return (
+        <div className="chat-box scrollbar container">
 
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
-
-            <p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p><p>aa</p>
+            <Massege sender="client" type="text"
+                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
+            <Massege sender="server" type="text"
+                     value="blalalaeeeggggggggggggggggggggggggffffffffffffffffffffffff eeeeeeeeeeeeeeeeeeeelalal"/>
+            <Massege sender="server" type="image"
+                     value="send.png"/>
         </div>
     )
 }
+
 export default ChatBox;

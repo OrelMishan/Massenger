@@ -95,7 +95,6 @@ a {
 .chat-sec {
     width: 70%;
     left: 30%;
-    float: right;
     position: fixed;
     height: 100%;
     top: 0%;
@@ -245,4 +244,10 @@ a {
     width: 50%;
     left: 10%;
     z-index: 10000;
+}
+.message{
+    padding: 10px 0;
+}
+.message-image{
+    width: 100%;
 }
