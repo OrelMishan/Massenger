@@ -3,7 +3,6 @@ import InputSec from "./InputSec";
 
 function RegisterPage() {
     return (
-
         <div id="app" className="shadow">
             <form>
                 <InputSec text="Username" type="text" id="username"/>

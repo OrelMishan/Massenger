@@ -2,11 +2,11 @@ import LeftMenu from "./LeftMenu";
 import RightSec from "./RightSec";
 
 
-function ChatPage() {
+function ChatPage(username,data) {
     return(
         <div>
             <RightSec/>
-            <LeftMenu/>
+            <LeftMenu username={username} data={data}/>
         </div>
     )
 }
