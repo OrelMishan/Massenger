@@ -2,7 +2,7 @@ function Contact({name, lastMessage, date} ) {
 
     return (
         <div>
-            <a className="list-group-item" id = "itay">
+            <a className="list-group-item" id = "transparent-bubble">
                 <div className="d-flex justify-content-between"><a href="#">
                     <img className="rounded-circle contact-pic"
                          src={require("./face.jpg")}></img>

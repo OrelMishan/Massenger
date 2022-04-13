@@ -23,6 +23,8 @@ function ChatBox() {
             value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
             <Massege sender="client" type="text"
                      value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
+            <Massege sender="server" type="image"
+                     value="gotcha.jpeg"/>
 
         </div>
     )

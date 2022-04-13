@@ -134,7 +134,8 @@ a {
     position: fixed;
     top: 13%;
     bottom: 9%;
-    width: 65%;
+    width: 66%;
+    padding-right: 2%;
     overflow-y: auto;
 }
 
@@ -143,6 +144,7 @@ a {
     bottom: 2px;
     width: 94%;
     height: 7%;
+
 }
 
 .send-input {
@@ -150,6 +152,7 @@ a {
     height: 100%;
     width: 90%;
     right: 0%;
+    background-color: #eaeaea;
 }
 
 .send-bottom {
@@ -251,7 +254,7 @@ a {
 }
 .modelBackground {
     z-index: 10000;
-    background-color: rgba(255, 255, 255, 0.37);
+    background-color: rgba(255, 255, 255, 0.63);
 }
 .modelContainer {
     position: fixed;
@@ -276,7 +279,7 @@ a {
     -o-background-size: cover;
     background-size: cover;
 }
-#itay{
+#transparent-bubble{
     background-color: rgba(40, 44, 52, 0.00);
     border-right: rgba(136, 136, 136, 0);
     border-left: rgba(136, 136, 136, 0);
