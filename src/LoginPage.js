@@ -5,30 +5,37 @@ import registeredUsers from "./Users";
 
 
 function checkIfRegistered(username, password) {
-    let index =  registeredUsers.findIndex((i) => (i.username === username && i.password === password));
-    return registeredUsers[index].data;
+    return registeredUsers.findIndex((i) => (i.username === username && i.password === password));
 }
 
 function login(username, password) {
-    if (password.current.value.length < 8) {
-        alert("Input is invalid!")
+    if (password.current.value.length < 8 || username.current.value.length === 0) {
+        alert("Input is invalid!");
+        return -1;
     }
-
     //after all checking..
-    return(checkIfRegistered(username.current.value, password.current.value));
+
+    let index = checkIfRegistered(username.current.value, password.current.value);
+    if (index>=0){
+        return index;
+    }
+    return -1;
 }
 
 
-function LoginPage({setData}) {
+function LoginPage({setData, setUsername}) {
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null)
 
     const check = (event) => {
         event.preventDefault();
-        setData(login(username, password,setData));
-        console.log("dd")
-        nextPage.current.click();
+        let user = login(username, password, setData);
+        if (user>=0) {
+            setData(registeredUsers[user].data);
+            setUsername(registeredUsers[user].username)
+            nextPage.current.click();
+        }
     }
 
     return (
