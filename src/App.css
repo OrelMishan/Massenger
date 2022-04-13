@@ -85,20 +85,39 @@ a {
 
 }
 
-.left-menu {
+.left-menu-limits {
     position: fixed;
-    width: 30%;
-    height: 100%;
-    overflow-y: scroll;
+    width: 28%;
+    height: 96%;
+    border-radius: 25px;
+    border: 2px solid rgba(107, 107, 107, 0.31);
+    padding: 2%;
+    margin: 1%;
+    background-color: rgba(40, 44, 52, 0.09);
 }
 
+.left-menu {
+    position: initial;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
 .chat-sec {
-    width: 70%;
+    width: 68%;
     left: 30%;
     position: fixed;
-    height: 100%;
+    height: 96%;
     top: 0%;
     bottom: 0%;
+    border-radius: 25px;
+    border: 2px solid rgba(107, 107, 107, 0.31);
+    padding: 2%;
+    margin: 1%;
+    background-color: rgba(40, 44, 52, 0.09);
+
 }
 
 .chat-nav {
@@ -114,32 +133,31 @@ a {
 
 .chat-box {
     position: fixed;
-    top: 7%;
-    bottom: 7%;
-    width: 70%;
+    top: 12%;
+    bottom: 9%;
+    width: 65%;
     overflow-y: auto;
 }
 
 .send-sec {
     position: absolute;
-    bottom: 0px;
-    width: 100%;
+    bottom: 2px;
+    width: 94%;
     height: 7%;
 }
 
 .send-input {
     position: absolute;
     height: 100%;
-    width: 85%;
-    right: 5%;
+    width: 90%;
+    right: 0%;
 }
 
 .send-bottom {
     position: absolute;
-    width: 5%;
     right: 0%;
     height: 100%;
-    border-radius: 0%;
+    border-radius: 10%;
 }
 
 
@@ -150,7 +168,7 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(241, 241, 241, 0);
 }
 
 /* Handle */
@@ -183,24 +201,19 @@ a {
     top: 14%;
     width: 100%;
     left: 0px;
-    height: 86%;
+    height: 82%;
     overflow-y: scroll;
-}
-.upper-left-main{
-    position: absolute;
-    height: 14%;
-    width: 100%;
 }
 .upper-left {
     width: 100%;
-    position: absolute;
-    height: 50%;
+    position: inherit;
+    height: 14%;
 }
 .new-contact{
-    background-color: #f1f1f1;
+    background-color: rgba(136, 136, 136, 0);
+    border-color: rgba(136, 136, 136, 0);
     float: right;
     height: 60%;
-    width: 8%;
 }
 .date-text {
     font-size: 0.7vw;
@@ -226,7 +239,8 @@ a {
     width: 5%;
     left: 0%;
     height: 100%;
-    border-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-top-right-radius: 0%;
 }
 
 .file-bottom {
@@ -238,6 +252,7 @@ a {
 }
 .modelBackground {
     z-index: 10000;
+    background-color: rgba(255, 255, 255, 0.37);
 }
 .modelContainer {
     position: fixed;
@@ -247,7 +262,34 @@ a {
 }
 .message{
     padding: 10px 0;
+    --bs-gutter-x: 0rem;
 }
 .message-image{
     width: 100%;
+}
+.chat-page-background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-image: url("./BackgroundPic.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#itay{
+    background-color: rgba(40, 44, 52, 0.0);
+}
+#chatNav{
+    padding-bottom: 2%;
+    background-color: rgba(40, 44, 52, 0.0);
+    border-bottom: 2px solid rgba(107, 107, 107, 0.31);
+}
+#message-border{
+    border-radius: 5px;
+    border: 1px solid rgb(2, 106, 255, 0);
+    background-color: rgba(40, 44, 52, 0.07);
+}
+#transparent-btn{
+
 }

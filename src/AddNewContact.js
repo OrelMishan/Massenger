@@ -3,7 +3,7 @@ import InputSec from "./InputSec";
 function AddNewContact({closeModel}) {
     return (
         <div className="modelContainer">
-            <div id="app" className="shadow-lg p-3 mb-5 bg-white rounded modelBackground">
+            <div id="" className="shadow-lg p-3 mb-5 rounded modelBackground">
                 <line>
                 <button type="button" className="btn-close" aria-label="Close" onClick={() => {
                     closeModel(false)

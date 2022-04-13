@@ -7,7 +7,7 @@ function Massege({sender, type, value}) {
         return (
             <div className="row message">
                 <div className={`col-6 ${offset}`}>
-                    <div className="text-break border border-5 border-warning">
+                    <div className="text-break" id="message-border">
                         {value}
                     </div>
                 </div>
@@ -21,7 +21,7 @@ function Massege({sender, type, value}) {
         return (
             <div className="row message">
                 <div className={`col-4 ${offset}`}>
-                    <div className="text-break border border-5 border-warning">
+                    <div className="text-break"  id="message-border">
                         <img className="message-image" src={require("./"+value)} alt="not found"/>
                     </div>
                 </div>

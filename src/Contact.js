@@ -2,7 +2,7 @@ function Contact({name, lastMessage, date} ) {
 
     return (
         <div>
-            <a className="list-group-item">
+            <a className="list-group-item" id = "itay">
                 <div className="d-flex justify-content-between"><a href="#">
                     <img className="rounded-circle contact-pic"
                          src={require("./face.jpg")}></img>
@@ -12,6 +12,7 @@ function Contact({name, lastMessage, date} ) {
                 </div>
                 <p className="mb-1 message-peak-text">{lastMessage}</p>
             </a>
+
 
 
         </div>
