@@ -87,10 +87,10 @@ a {
 
 .left-menu-limits {
     position: fixed;
-    width: 28%;
+    width: 29%;
     height: 96%;
     border-radius: 25px;
-    border: 2px solid rgba(107, 107, 107, 0.31);
+    /*border: 2px solid rgba(107, 107, 107, 0.31);*/
     padding: 2%;
     margin: 1%;
     background-color: rgba(40, 44, 52, 0.09);
@@ -113,7 +113,6 @@ a {
     top: 0%;
     bottom: 0%;
     border-radius: 25px;
-    border: 2px solid rgba(107, 107, 107, 0.31);
     padding: 2%;
     margin: 1%;
     background-color: rgba(40, 44, 52, 0.09);
@@ -133,7 +132,7 @@ a {
 
 .chat-box {
     position: fixed;
-    top: 12%;
+    top: 13%;
     bottom: 9%;
     width: 65%;
     overflow-y: auto;
@@ -278,7 +277,10 @@ a {
     background-size: cover;
 }
 #itay{
-    background-color: rgba(40, 44, 52, 0.0);
+    background-color: rgba(40, 44, 52, 0.00);
+    border-right: rgba(136, 136, 136, 0);
+    border-left: rgba(136, 136, 136, 0);
+    border-bottom: rgba(136, 136, 136, 0);
 }
 #chatNav{
     padding-bottom: 2%;
