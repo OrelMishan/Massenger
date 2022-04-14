@@ -1,4 +1,4 @@
-function Message({sender, type, value}) {
+function Message({sender, type, value }) {
     let offset = ""
     if (type === "text") {
         if (sender==="server"){
@@ -16,13 +16,13 @@ function Message({sender, type, value}) {
     }
     if (type === "image") {
         if (sender==="server"){
-            offset="offset-8"
+            offset="offset-10"
         }
         return (
-            <div className="row message">
-                <div className={`col-4 ${offset}`}>
+            <div className="row message" >
+                <div className={`col-2 ${offset}`}>
                     <div className="text-break"  id="message-border">
-                        <img className="message-image" src={require("./"+value)} alt="not found"/>
+                        <img src={value} className="message-image" alt="not found"/>
                     </div>
                 </div>
             </div>

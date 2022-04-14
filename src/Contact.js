@@ -1,7 +1,10 @@
-function Contact({contact, setContact}) {
+function Contact({contact, setContact, setListMessage}) {
 
     return (
-        <a className="list-group-item" id="transparent-bubble" onClick={()=>setContact(contact)}>
+        <a className="list-group-item" id="transparent-bubble" onClick={()=> {
+            setContact(contact);
+            setListMessage(contact.messages);
+        }}>
             <div className="d-flex justify-content-between">
                 <img className="rounded-circle contact-pic"
                      src={"face.jpg"}/>

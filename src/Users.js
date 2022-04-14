@@ -6,13 +6,13 @@ let registeredUsers = [
             nickname: "goooooooo",
             data: [{
                 contactName: "ddd",
-                messages: [{sender: "client", type: "image", value: "send.png"},
-                    {sender: "server", type: "image", value: "send.png"},
+                messages: [{sender: "client", type: "image", value: "face.jpg"},
+                    {sender: "server", type: "image", value: require("./send.png")},
                     {sender: "client", type: "text", value: "ffffffffffffffffffffffffffffffffffffff"}]
             }, {
                 contactName: "fff",
                 messages: [{sender: "client", type: "image", value: "send.png"},
-                    {sender: "server", type: "text", value: "send.png"},
+                    {sender: "server", type: "image", value: require("./send.png")},
                     {sender: "client", type: "text", value: "fffff"}]
             }, {
                 contactName: "ggg",

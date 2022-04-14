@@ -1,10 +1,11 @@
 import Message from "./message";
 
-function ChatBox({messagesList}) {
+function ChatBox({listMessages}) {
     let dataList = "";
-    if (messagesList) {
-        dataList = messagesList.map((message) => {
-                return <Message sender={message.sender} type={message.type} value={message.value}/>;
+    if (listMessages.length !== 0) {
+        dataList = listMessages.map((message, key) => {
+                if (message.value !== "")
+                    return <Message sender={message.sender} type={message.type} value={message.value} key={key}/>;
             }
         )
     }

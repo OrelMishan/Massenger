@@ -1,5 +1,6 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useRef, useState} from "react";
+import registeredUsers from "./Users";
 
 function isVideo(fileName) {
     let parts = fileName.split('.');
@@ -15,30 +16,36 @@ function isVideo(fileName) {
     }
 }
 
-function ChatInput({contact,setMessagesList}) {
+function saveMessage(contact, newMessage, username, setListMessages) {
+    let index = registeredUsers.findIndex((i) => (i.username === username));
+    let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
+    registeredUsers[index].data[contactIndex].messages.push(newMessage);
+}
+
+function ChatInput({contact, setListMessages, username}) {
     const fileInput = useRef(null)
-    const [file, setFile] = useState("");
     const recordInput = useRef(null)
     const textInput = useRef(null)
 
     const sendText = (event) => {
-        event.preventDefault()
-        let newList=contact.messages;
-        console.log(newList);
-        newList.push({sender: "client", type: "text", value: textInput.current.value})
-        setMessagesList(newList);
-        alert(textInput.current.value)
+        event.preventDefault();
+        if (contact.length === 0 || textInput.current.value.length === 0) {
+            return;
+        }
+        let newItem = {sender: "client", type: "text", value: textInput.current.value};
+        textInput.current.value = "";
+        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
+        saveMessage(contact, newItem, username, setListMessages);
     }
 
     const sendfile = (event) => {
         event.preventDefault();
-        setFile(URL.createObjectURL(event.target.files[0]));
-        let newMessage = {sender: "client", type: "image", value: file};
-        if (isVideo(file)) {
-            newMessage.type = "video";
+        let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
+        if (isVideo(URL.createObjectURL(event.target.files[0]))) {
+            newItem.type = "video";
         }
-        setMessagesList(newMessage);
-        setFile("");
+        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
+        saveMessage(contact, newItem, username, setListMessages);
     }
 
     return (
@@ -48,13 +55,19 @@ function ChatInput({contact,setMessagesList}) {
             </button>
             <input type="file" accept="video/* image/*" ref={fileInput} onChange={sendfile}/>
             <button className="btn btn-success file-bottom" id="transparent-btn"
-                    onClick={() => fileInput.current.click()}>
+                    onClick={() => {
+                        if (contact.length === 0) {
+                            return;
+                        }
+                        fileInput.current.click();
+                    }}>
                 <i className="bi bi-paperclip"/>
             </button>
             <input type="text" className="send-input" placeholder="massage" ref={textInput}/>
             <button className="btn btn-success send-bottom" id="transparent-btn" type="button" onClick={sendText}>
                 <i className="bi bi-send"/>
             </button>
+
         </div>)
 }
 

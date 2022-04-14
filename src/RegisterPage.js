@@ -59,7 +59,7 @@ function RegisterPage({setUser}) {
             <InputSec text="Verify password" type="password" id={verifyPassword}/>
             <InputSec text="Display name" type="text" id={nickname}/>
             <div className="mt-1">
-                <input type="file" accept="image/*" ref={fileInput} hidden="true" onChange={showImage}/>
+                <input type="file" accept="image/*" ref={fileInput} hidden={true} onChange={showImage}/>
                 <button className="btn btn-primary btn-sm shadow" onClick={() => fileInput.current.click()}>
                     <i className="bi bi-file-image"/>
                 </button>
