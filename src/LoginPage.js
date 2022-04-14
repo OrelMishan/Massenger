@@ -16,24 +16,23 @@ function login(username, password) {
     //after all checking..
 
     let index = checkIfRegistered(username.current.value, password.current.value);
-    if (index>=0){
+    if (index >= 0) {
         return index;
     }
     return -1;
 }
 
 
-function LoginPage({setData, setUsername}) {
+function LoginPage({setUser}) {
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null)
 
     const check = (event) => {
         event.preventDefault();
-        let user = login(username, password, setData);
-        if (user>=0) {
-            setData(registeredUsers[user].data);
-            setUsername(registeredUsers[user].username)
+        let user = login(username, password);
+        if (user >= 0) {
+            setUser(registeredUsers[user]);
             nextPage.current.click();
         }
     }

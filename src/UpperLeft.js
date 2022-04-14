@@ -1,13 +1,13 @@
 import AddNewContact from "./AddNewContact";
 import {useState} from "react";
 
-function UpperLeft() {
+function UpperLeft({nickname, photo}) {
     const [openModel, setOpenModel] = useState(false);
     return (
         <div className="upper-left">
             <div className="sticky-sm-top big-text">
-                <img src={require("./face.jpg")} className="rounded-circle my-photo" alt="not found image"/>
-                David Monheit
+                <img src={photo} className="rounded-circle my-photo" alt="not found image"/>
+                {nickname}
                 <button className="new-contact" onClick={()=>{setOpenModel(true);}}><i className="bi bi-person-plus-fill"></i></button>
             </div>
             {openModel && <AddNewContact closeModel = {setOpenModel}/>}

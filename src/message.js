@@ -1,4 +1,4 @@
-function Massege({sender, type, value}) {
+function Message({sender, type, value}) {
     let offset = ""
     if (type === "text") {
         if (sender==="server"){
@@ -30,4 +30,4 @@ function Massege({sender, type, value}) {
     }
 }
 
-export default Massege;
+export default Message;

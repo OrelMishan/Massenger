@@ -1,12 +1,14 @@
 import LeftMenu from "./LeftMenu";
 import RightSec from "./RightSec";
+import {useState} from "react";
 
 
-function ChatPage(username,data) {
+function ChatPage({user}) {
+    const [contact,setContact]=useState([])
     return(
         <div className="chat-page-background">
-            <RightSec/>
-            <LeftMenu username={username} data={data}/>
+            <RightSec contact={contact}/>
+            <LeftMenu user={user} setContact={setContact}/>
         </div>
     )
 }

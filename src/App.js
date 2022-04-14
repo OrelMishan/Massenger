@@ -7,15 +7,14 @@ import {useState} from "react";
 
 
 function App() {
-    const [data, setData] = useState([])
-    const [username, setUsername] = useState([])
+    const [user, setUser] = useState([])
     return (
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/"} element={<LoginPage setData={setData} setUsername={setUsername}/>}/>
-                    <Route path={"/register"} element={<RegisterPage setData={setData} setUsername={setUsername}/>}/>
-                    <Route path={"/chat"} element={<ChatPage username={username} data={data}/>}/>
+                    <Route path={"/"} element={<LoginPage setUser={setUser}/>}/>
+                    <Route path={"/register"} element={<RegisterPage setUser={setUser}/>}/>
+                    <Route path={"/chat"} element={<ChatPage user={user}/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

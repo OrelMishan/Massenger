@@ -1,31 +1,17 @@
-import Massege from "./massege";
+import Message from "./message";
 
-function ChatBox() {
+function ChatBox({messagesList}) {
+    let dataList = "";
+    if (messagesList) {
+        dataList = messagesList.map((message) => {
+                return <Message sender={message.sender} type={message.type} value={message.value}/>;
+            }
+        )
+    }
 
     return (
         <div className="chat-box scrollbar">
-
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="server" type="text"
-                     value="blalalaeeeggggggggggggggggggggggggffffffffffffffffffffffff eeeeeeeeeeeeeeeeeeeelalal"/>
-            <Massege sender="server" type="image"
-                     value="send.png"/>
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/><Massege
-            sender="client" type="text"
-            value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="client" type="text"
-                     value="blalalalhhhhhhhhhhhhalal ssssssssssssssssssssssssss ssssssssssssssssssssssssssssssssssss"/>
-            <Massege sender="server" type="image"
-                     value="gotcha.jpeg"/>
-
+            {dataList}
         </div>
     )
 }
