@@ -185,7 +185,6 @@ a {
 
 
 .contact-pic {
-    position: absolute;
     height: 70%;
     width: 7%;
     float: left;
@@ -219,6 +218,7 @@ a {
 }
 .date-text {
     font-size: 0.7vw;
+    float: right;
 }
 .message-peak-text {
     font-size: 1vw;
@@ -283,7 +283,7 @@ a {
     background-color: rgba(40, 44, 52, 0.00);
     border-right: rgba(136, 136, 136, 0);
     border-left: rgba(136, 136, 136, 0);
-    border-bottom: rgba(136, 136, 136, 0);
+    /*border-bottom: rgba(136, 136, 136, 0.45);*/
 }
 #chatNav{
     padding-bottom: 2%;
@@ -300,5 +300,19 @@ a {
 }
 
 .user-photo{
+    float: left;
     width: 10%;
+    height: 10%;
+}
+.user-name{
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    font-size: 1.4vw;
+
+}
+.last-message-image{
+    position: relative;
+    left: 43%;
+    width: 7%;
 }
