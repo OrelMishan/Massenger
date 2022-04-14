@@ -3,7 +3,7 @@ import {useRef, useState} from "react";
 import registeredUsers from "./Users";
 
 function isVideo(fileName) {
-    let parts = fileName.split('.');
+    let parts = fileName.split('/');
     let ext = parts[parts.length - 1];
     switch (ext.toLowerCase()) {
         case 'm4v':
@@ -16,7 +16,7 @@ function isVideo(fileName) {
     }
 }
 
-function saveMessage(contact, newMessage, username, setListMessages) {
+function saveMessage(contact, newMessage, username) {
     let index = registeredUsers.findIndex((i) => (i.username === username));
     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
     registeredUsers[index].data[contactIndex].messages.push(newMessage);
@@ -35,17 +35,20 @@ function ChatInput({contact, setListMessages, username}) {
         let newItem = {sender: "client", type: "text", value: textInput.current.value};
         textInput.current.value = "";
         setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
-        saveMessage(contact, newItem, username, setListMessages);
+        saveMessage(contact, newItem, username);
     }
 
     const sendfile = (event) => {
         event.preventDefault();
         let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
-        if (isVideo(URL.createObjectURL(event.target.files[0]))) {
+        console.log(event.target.files[0]);
+        if (isVideo(event.target.files[0].type)) {
             newItem.type = "video";
+            let src = URL.createObjectURL(event.target.files[0]);
+            newItem.value = src;
         }
         setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
-        saveMessage(contact, newItem, username, setListMessages);
+        saveMessage(contact, newItem, username);
     }
 
     return (

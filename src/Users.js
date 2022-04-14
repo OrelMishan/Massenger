@@ -8,7 +8,8 @@ let registeredUsers = [
                 contactName: "ddd",
                 messages: [{sender: "client", type: "image", value: "face.jpg"},
                     {sender: "server", type: "image", value: require("./send.png")},
-                    {sender: "client", type: "text", value: "ffffffffffffffffffffffffffffffffffffff"}]
+                    {sender: "client", type: "text", value: "ffffffffffffffffffffffffffffffffffffff"},
+                    {sender: "server",type: "video",value: "video.mp4"}]
             }, {
                 contactName: "fff",
                 messages: [{sender: "client", type: "image", value: "send.png"},

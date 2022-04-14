@@ -5,10 +5,10 @@ function Contact({contact, setContact, setListMessage}) {
         if(message.type === "image") {
             return  <img src={message.value} className="last-message-image" alt="not found"/>
         }else if(message.type === "video"){
-
+            return <i className="bi bi-person-video3 last-message-image"/>
         }
         else if(message.type === "record"){
-
+            return <i className="bi bi-mic-fill last-message-image"/>
         } else if(message.type === "text"){
             return <p className="mb-1 message-peak-text">{message.value}</p>        }
     }
