@@ -1,6 +1,9 @@
 import Message from "./message";
+import {useRef} from "react";
+
 
 function ChatBox({listMessages}) {
+    let window = useRef(null);
     let dataList = "";
     if (listMessages.length !== 0) {
         dataList = listMessages.map((message, key) => {
@@ -10,8 +13,12 @@ function ChatBox({listMessages}) {
         )
     }
 
+    const scrollToBottom = (event) => {
+        window.current.scrollTop=window.current.scrollHeight;
+    }
+
     return (
-        <div className="chat-box scrollbar">
+        <div className="chat-box scrollbar" onLoad={scrollToBottom} ref={window}>
             {dataList}
         </div>
     )
