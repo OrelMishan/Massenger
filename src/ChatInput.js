@@ -36,7 +36,6 @@ function ChatInput({contact, setListMessages, username}) {
         let newItem = {sender: "client", type: "text", value: textInput.current.value};
         textInput.current.value = "";
         setListMessages(listMessages => [...listMessages, newItem]);
-        saveMessage(contact, newItem, username);
     }
 
     const sendfile = (event) => {
@@ -48,8 +47,7 @@ function ChatInput({contact, setListMessages, username}) {
             let src = URL.createObjectURL(event.target.files[0]);
             newItem.value = src;
         }
-        setListMessages(listMessages => [...listMessages, {sender: "client", type: "text", value: ""}]);
-        saveMessage(contact, newItem, username);
+        setListMessages(listMessages => [...listMessages, newItem]);
     }
 
     return (

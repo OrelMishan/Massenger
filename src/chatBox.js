@@ -5,7 +5,7 @@ import {useRef} from "react";
 function ChatBox({listMessages}) {
     let window = useRef(null);
     let dataList = "";
-    if (listMessages.length !== 0) {
+    if (listMessages) {
         // eslint-disable-next-line array-callback-return
         dataList = listMessages.map((message, key) => {
                 if (message.value !== "")

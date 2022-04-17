@@ -1,6 +1,7 @@
 import Message from "./message";
+import registeredUsers from "./Users";
 
-function Contact({contact, setContact, setListMessage}) {
+function Contact({contact, setContact, setListMessage, prevContact, username,listMessage}) {
     const lastMessage = (message) => {
         if(message.type === "image") {
             return  <img src={message.value} className="last-message-image" alt="not found"/>
@@ -15,8 +16,14 @@ function Contact({contact, setContact, setListMessage}) {
 
     return (
         <a className="list-group-item" id="transparent-bubble" onClick={()=> {
+            if (prevContact){
+                let index = registeredUsers.findIndex((i) => (i.username === username));
+                let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === prevContact.contactName));
+                registeredUsers[index].data[contactIndex].messages=listMessage;
+            }
             setContact(contact);
             setListMessage(contact.messages);
+
         }}>
             <div className="d-flex justify-content-between">
                 <img className="rounded-circle contact-pic"

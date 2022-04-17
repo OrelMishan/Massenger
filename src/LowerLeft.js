@@ -1,8 +1,9 @@
 import Contact from "./Contact";
 
-function LowerLeft({data, setContact,setListMessage}) {
-    const dataList = data.map((contact,key) => {
-            return <Contact contact={contact} setContact={setContact} setListMessage={setListMessage} key={key}/>;
+function LowerLeft({user, setContact, setListMessage, prevContact, listMessage}) {
+    const dataList = user.data.map((contact, key) => {
+            return <Contact contact={contact} setContact={setContact} setListMessage={setListMessage}
+                            prevContact={prevContact} username={user.username} listMessage={listMessage} key={key}/>;
         }
     )
     return (
