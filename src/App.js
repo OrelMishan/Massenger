@@ -9,7 +9,7 @@ import {useState} from "react";
 function App() {
     const [user, setUser] = useState([])
     return (
-        <div>
+        <div className="chat-page-background">
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<LoginPage setUser={setUser}/>}/>

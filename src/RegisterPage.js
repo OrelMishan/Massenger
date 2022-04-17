@@ -52,7 +52,7 @@ function RegisterPage({setUser}) {
         }
     }
     return (
-        <div id="app" className="shadow">
+        <div id="app" className="shadow log-reg-background">
             <Link to="/chat" ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
@@ -63,7 +63,8 @@ function RegisterPage({setUser}) {
                 <button className="btn btn-primary btn-sm shadow" onClick={() => fileInput.current.click()}>
                     <i className="bi bi-file-image"/>
                 </button>
-                <img src={image} className="user-photo"/>
+                {/*<img src={image} className="user-photo" defaultValue={null}/>*/}
+
             </div>
             <div className="mb-3">
                 <button type="submit" id="button" className="btn btn-primary btn-sm shadow" onClick={reg}>Register

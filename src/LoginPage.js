@@ -38,7 +38,9 @@ function LoginPage({setUser}) {
     }
 
     return (
-        <div id="app" className="shadow">
+        <div id="app" className="shadow log-reg-background">
+            <header>WHATSUP</header>
+
             <Link to="/chat" ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
