@@ -41,7 +41,6 @@ function ChatInput({contact, setListMessages, username}) {
     const sendfile = (event) => {
         event.preventDefault();
         let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
-        console.log(event.target.files[0]);
         if (isVideo(event.target.files[0].type)) {
             newItem.type = "video";
             let src = URL.createObjectURL(event.target.files[0]);
