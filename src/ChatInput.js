@@ -20,6 +20,7 @@ function saveMessage(contact, newMessage, username) {
     let index = registeredUsers.findIndex((i) => (i.username === username));
     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
     registeredUsers[index].data[contactIndex].messages.push(newMessage);
+    registeredUsers[index].data[contactIndex].lastMessageTime = new Date().toLocaleString();
 }
 
 function ChatInput({contact, setListMessages, username}) {
@@ -34,7 +35,7 @@ function ChatInput({contact, setListMessages, username}) {
         }
         let newItem = {sender: "client", type: "text", value: textInput.current.value};
         textInput.current.value = "";
-        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
+        setListMessages(listMessages => [...listMessages, newItem]);
         saveMessage(contact, newItem, username);
     }
 
@@ -47,7 +48,7 @@ function ChatInput({contact, setListMessages, username}) {
             let src = URL.createObjectURL(event.target.files[0]);
             newItem.value = src;
         }
-        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
+        setListMessages(listMessages => [...listMessages, {sender: "client", type: "text", value: ""}]);
         saveMessage(contact, newItem, username);
     }
 

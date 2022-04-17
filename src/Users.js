@@ -6,22 +6,26 @@ let registeredUsers = [
             nickname: "goooooooo",
             data: [{
                 contactName: "ddd",
+                lastMessageTime: new Date().toLocaleString(),
                 messages: [{sender: "client", type: "image", value: "face.jpg"},
                     {sender: "server", type: "image", value: require("./send.png")},
                     {sender: "client", type: "text", value: "ffffffffffffffffffffffffffffffffffffff"},
-                    {sender: "server",type: "video",value: "video.mp4"}]
+                    {sender: "server", type: "video", value: "video.mp4"}]
             }, {
                 contactName: "fff",
+                lastMessageTime: new Date().toLocaleString(),
                 messages: [{sender: "client", type: "image", value: "send.png"},
                     {sender: "server", type: "image", value: require("./send.png")},
                     {sender: "client", type: "text", value: "fffff"}]
             }, {
                 contactName: "ggg",
+                lastMessageTime: new Date().toLocaleString(),
                 messages: [{sender: "client", type: "image", value: "send.png"},
                     {sender: "server", type: "text", value: "send.png"},
                     {sender: "client", type: "text", value: "fffff"}]
             }, {
                 contactName: "jjj",
+                lastMessageTime: new Date().toLocaleString(),
                 messages: [{sender: "client", type: "image", value: "send.png"},
                     {sender: "server", type: "text", value: "send.png"},
                     {sender: "client", type: "text", value: "fffff"}]

@@ -25,7 +25,7 @@ function Contact({contact, setContact, setListMessage}) {
 
             </div>
             <h5 className="mb-1 big-text user-name">{contact.contactName}</h5>
-            <small className="text-muted date-text">"14/4/2022"</small>
+            <small className="text-muted date-text">{contact.lastMessageTime}</small>
             {lastMessage(contact.messages[contact.messages.length-1])}
             {/*<p className="mb-1 message-peak-text">{contact.messages[contact.messages.length-1].value}</p>*/}
         </a>
