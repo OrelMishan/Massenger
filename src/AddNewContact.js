@@ -6,7 +6,13 @@ function AddNewContact({closeModel, setContactList, username}) {
     let urlPhoto = "face.jpg";
     const textInput = useRef(null);
     const addContact = () => {
-        let newContact = {contactName: textInput.current.value,photo:urlPhoto ,lastMessageTime: "", messages: []}
+        let newContact = {
+            contactName: textInput.current.value,
+            photo: urlPhoto,
+            lastMessageTime: "",
+            lastMessage: {sender: "client", type: "text", value: ""},
+            messages: []
+        }
         setContactList(contactList => [...contactList, newContact]);
         let index = registeredUsers.findIndex((i) => (i.username === username));
         registeredUsers[index].data.push(newContact);
@@ -15,7 +21,7 @@ function AddNewContact({closeModel, setContactList, username}) {
 
     const addPhoto = (event) => {
         event.preventDefault();
-        urlPhoto=URL.createObjectURL(event.target.files[0]);
+        urlPhoto = URL.createObjectURL(event.target.files[0]);
     }
 
     return (

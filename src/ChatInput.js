@@ -2,21 +2,23 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useRef, useState} from "react";
 import registeredUsers from "./Users";
 
-function isLegalFile(fileType){
+function isLegalFile(fileType) {
     let parts = fileType.split('/');
     return parts[parts.length - 2] === "video" || parts[parts.length - 2] === "image";
 }
+
 function isVideo(fileName) {
     let parts = fileName.split('/');
     return parts[parts.length - 2] === "video";
 }
 
 
-function saveMessage(contact, newMessage, username) {
+function updateContact(contact, newMessage, username) {
     let index = registeredUsers.findIndex((i) => (i.username === username));
     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
-    registeredUsers[index].data[contactIndex].messages.push(newMessage);
     registeredUsers[index].data[contactIndex].lastMessageTime = new Date().toLocaleString();
+    registeredUsers[index].data[contactIndex].lastMessage = newMessage;
+
 }
 
 function ChatInput({contact, setListMessages, username}) {
@@ -32,11 +34,12 @@ function ChatInput({contact, setListMessages, username}) {
         let newItem = {sender: "client", type: "text", value: textInput.current.value};
         textInput.current.value = "";
         setListMessages(listMessages => [...listMessages, newItem]);
+        updateContact(contact, newItem, username);
     }
 
     const sendfile = (event) => {
         event.preventDefault();
-        if (!isLegalFile(event.target.files[0].type)){
+        if (!isLegalFile(event.target.files[0].type)) {
             return;
         }
         let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
@@ -46,7 +49,8 @@ function ChatInput({contact, setListMessages, username}) {
             newItem.value = src;
         }
         setListMessages(listMessages => [...listMessages, newItem]);
-        fileInput.current.value=null;
+        fileInput.current.value = null;
+        updateContact(contact, newItem, username);
     }
 
     return (

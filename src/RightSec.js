@@ -5,11 +5,11 @@ import ChatBox from "./chatBox";
 function RightSec({contact, listMessages, setListMessage, username}) {
 
 
-    let nav = <ChatNav name=""/>;
+    let nav = <ChatNav name="" image={""}/>;
     let chat = <ChatBox masseges={null}/>
     let input = <ChatInput messages={null}/>
     if (contact) {
-        nav = <ChatNav name={contact.contactName}/>;
+        nav = <ChatNav name={contact.contactName} image={contact.photo}/>;
         chat = <ChatBox listMessages={listMessages}/>
         input = <ChatInput contact={contact} setListMessages={setListMessage} username={username}/>
     }
