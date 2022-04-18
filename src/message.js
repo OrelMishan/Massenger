@@ -14,6 +14,18 @@ function Message({sender, type, value}) {
             </div>
         )
     }
+    if (type === "record") {
+        if (sender === "server") {
+            offset = "offset-7"
+        }
+        return (
+            <div className="row message">
+                <div className={`col-6 ${offset}`}>
+                    <audio src={value} controls/>
+                </div>
+            </div>
+        )
+    }
     if (type === "image") {
         if (sender === "server") {
             offset = "offset-10"

@@ -1,37 +1,7 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
-import {useRef, useState} from "react";
+import {useRef} from "react";
 import registeredUsers from "./Users";
-
-
-const recordAudio = () =>
-    new Promise(async resolve => {
-        const stream = await navigator.mediaDevices.getUserMedia({audio: true});
-        const mediaRecorder = new MediaRecorder(stream);
-        const audioChunks = [];
-
-        mediaRecorder.addEventListener("dataavailable", event => {
-            audioChunks.push(event.data);
-        });
-
-        const start = () => mediaRecorder.start();
-
-        const stop = () =>
-            new Promise(resolve => {
-                mediaRecorder.addEventListener("stop", () => {
-                    const audioBlob = new Blob(audioChunks);
-                    const audioUrl = URL.createObjectURL(audioBlob);
-                    console.log(audioUrl);
-                    const audio = new Audio(audioUrl);
-                    const play = () => audio.play();
-                    resolve({audioBlob, audioUrl, play});
-                });
-
-                mediaRecorder.stop();
-            });
-
-        resolve({start, stop});
-    });
 
 
 function checkIfRegistered(username, password) {
@@ -54,19 +24,6 @@ function login(username, password) {
 
 
 function LoginPage({setUser}) {
-    let rec = null;
-    const [audioUrl,setAudioUrl]=useState("");
-    const myFun = async () => {
-        rec = await recordAudio();
-        rec.start();
-    }
-    const stopFun = async () => {
-        const audio = await rec.stop();
-        audio.play();
-        setAudioUrl(audio.audioUrl);
-    };
-
-
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null)
@@ -92,9 +49,6 @@ function LoginPage({setUser}) {
                 </button>
                 <div id="register">Not registered? <Link to="/register">Click here</Link> to register</div>
             </div>
-            <button onClick={myFun}>record</button>
-            <button onClick={stopFun}>stop</button>
-            <audio src={audioUrl} controls/>
         </div>);
 }
 

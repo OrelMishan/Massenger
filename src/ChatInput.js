@@ -1,6 +1,7 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {useRef, useState} from "react";
+import {Component, useRef, useState} from "react";
 import registeredUsers from "./Users";
+import RecordModal from "./RecordModal";
 
 function isLegalFile(fileType) {
     let parts = fileType.split('/');
@@ -18,13 +19,14 @@ function updateContact(contact, newMessage, username) {
     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
     registeredUsers[index].data[contactIndex].lastMessageTime = new Date().toLocaleString();
     registeredUsers[index].data[contactIndex].lastMessage = newMessage;
-
 }
+
 
 function ChatInput({contact, setListMessages, username}) {
     const fileInput = useRef(null)
-    const recordInput = useRef(null)
     const textInput = useRef(null)
+    const [openModel, setOpenModel] = useState(false);
+
 
     const sendText = (event) => {
         event.preventDefault();
@@ -55,9 +57,18 @@ function ChatInput({contact, setListMessages, username}) {
 
     return (
         <div className="send-sec">
-            <button className="btn btn-success record-bottom" type="button" id="transparent-btn" ref={recordInput}>
+            <button className="btn btn-success record-bottom" type="button" id="transparent-btn"
+                    onClick={() => {
+                        if (contact.length === 0) {
+                            return;
+                        }
+                        setOpenModel(true)
+                    }}>
                 <i className="bi bi-mic-fill"/>
             </button>
+            {openModel &&
+                <RecordModal closeModel={setOpenModel} contact={contact} setListMessages={setListMessages}
+                             username={username}/>}
             <input type="file" accept="video/* image/*" ref={fileInput} onChange={sendfile}/>
             <button className="btn btn-success file-bottom" id="transparent-btn"
                     onClick={() => {
