@@ -14,6 +14,18 @@ function Message({sender, type, value}) {
             </div>
         )
     }
+    if (type === "record") {
+        if (sender === "server") {
+            offset = "offset-7"
+        }
+        return (
+            <div className="row message">
+                <div className={`col-6 ${offset}`}>
+                    <audio src={value} controls/>
+                </div>
+            </div>
+        )
+    }
     if (type === "image") {
         if (sender === "server") {
             offset = "offset-10"
@@ -32,14 +44,11 @@ function Message({sender, type, value}) {
         if (sender === "server") {
             offset = "offset-8"
         }
-        let parts = value.split('.');
-        let ext = parts[parts.length - 1];
-        ext = "video/"+ext;
         return (
             <div className="row message">
                 <div className={`col-4 ${offset}`}>
                     <video controls id="message-border">
-                        <source src={value} />
+                        <source src={value}/>
                     </video>
                 </div>
             </div>

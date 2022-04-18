@@ -39,12 +39,12 @@ function LoginPage({setUser}) {
 
     return (
         <div id="app" className="shadow log-reg-background">
-            <header>WHATSUP</header>
+            <header>MASSEGER</header>
 
             <Link to="/chat" ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
-            <div className="mb-3">
+            <div className="mb-3 mt-2">
                 <button type="button" className="btn btn-primary btn-sm shadow" onClick={check}>Login
                 </button>
                 <div id="register">Not registered? <Link to="/register">Click here</Link> to register</div>

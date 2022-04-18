@@ -201,7 +201,7 @@ a {
     position: absolute;
     top: 14%;
     width: 100%;
-    left: 0px;
+    left: 0;
     height: 82%;
     overflow-y: scroll;
 }
@@ -325,4 +325,7 @@ a {
     position: relative;
     left: 43%;
     width: 7%;
+}
+.hide{
+    visibility: hidden;
 }

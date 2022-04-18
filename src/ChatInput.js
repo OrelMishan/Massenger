@@ -1,31 +1,32 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {useRef, useState} from "react";
+import {Component, useRef, useState} from "react";
 import registeredUsers from "./Users";
+import RecordModal from "./RecordModal";
+
+function isLegalFile(fileType) {
+    let parts = fileType.split('/');
+    return parts[parts.length - 2] === "video" || parts[parts.length - 2] === "image";
+}
 
 function isVideo(fileName) {
     let parts = fileName.split('/');
-    let ext = parts[parts.length - 1];
-    switch (ext.toLowerCase()) {
-        case 'm4v':
-        case 'avi':
-        case 'mpg':
-        case 'mp4':
-            return true;
-        default:
-            return false;
-    }
+    return parts[parts.length - 2] === "video";
 }
 
-function saveMessage(contact, newMessage, username) {
+
+function updateContact(contact, newMessage, username) {
     let index = registeredUsers.findIndex((i) => (i.username === username));
     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === contact.contactName));
-    registeredUsers[index].data[contactIndex].messages.push(newMessage);
+    registeredUsers[index].data[contactIndex].lastMessageTime = new Date().toLocaleString();
+    registeredUsers[index].data[contactIndex].lastMessage = newMessage;
 }
+
 
 function ChatInput({contact, setListMessages, username}) {
     const fileInput = useRef(null)
-    const recordInput = useRef(null)
     const textInput = useRef(null)
+    const [openModel, setOpenModel] = useState(false);
+
 
     const sendText = (event) => {
         event.preventDefault();
@@ -34,28 +35,40 @@ function ChatInput({contact, setListMessages, username}) {
         }
         let newItem = {sender: "client", type: "text", value: textInput.current.value};
         textInput.current.value = "";
-        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
-        saveMessage(contact, newItem, username);
+        setListMessages(listMessages => [...listMessages, newItem]);
+        updateContact(contact, newItem, username);
     }
 
     const sendfile = (event) => {
         event.preventDefault();
+        if (!isLegalFile(event.target.files[0].type)) {
+            return;
+        }
         let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
-        console.log(event.target.files[0]);
         if (isVideo(event.target.files[0].type)) {
             newItem.type = "video";
             let src = URL.createObjectURL(event.target.files[0]);
             newItem.value = src;
         }
-        setListMessages(listMessages=>[...listMessages,{sender:"client",type:"text",value:""}]);
-        saveMessage(contact, newItem, username);
+        setListMessages(listMessages => [...listMessages, newItem]);
+        fileInput.current.value = null;
+        updateContact(contact, newItem, username);
     }
 
     return (
         <div className="send-sec">
-            <button className="btn btn-success record-bottom" type="button" id="transparent-btn" ref={recordInput}>
+            <button className="btn btn-success record-bottom" type="button" id="transparent-btn"
+                    onClick={() => {
+                        if (contact.length === 0) {
+                            return;
+                        }
+                        setOpenModel(true)
+                    }}>
                 <i className="bi bi-mic-fill"/>
             </button>
+            {openModel &&
+                <RecordModal closeModel={setOpenModel} contact={contact} setListMessages={setListMessages}
+                             username={username}/>}
             <input type="file" accept="video/* image/*" ref={fileInput} onChange={sendfile}/>
             <button className="btn btn-success file-bottom" id="transparent-btn"
                     onClick={() => {

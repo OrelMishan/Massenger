@@ -1,7 +1,11 @@
-function ChatNav({name}) {
+function ChatNav({name, image}) {
+    let hide = true;
+    if (image !== "") {
+        hide = false;
+    }
     return (
         <nav className="navbar-light px-3 sticky-sm-top chat-nav fw-bolder big-text" id="chatNav">
-            <img src={"face.jpg"} className="rounded-circle chat-pic" alt="not found image"/>
+            <img src={image} className={`rounded-circle chat-pic`} hidden={hide} alt="not found image "/>
             {name}
         </nav>
     )
