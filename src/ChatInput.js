@@ -2,19 +2,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import {useRef, useState} from "react";
 import registeredUsers from "./Users";
 
+function isLegalFile(fileType){
+    let parts = fileType.split('/');
+    return parts[parts.length - 2] === "video" || parts[parts.length - 2] === "image";
+}
 function isVideo(fileName) {
     let parts = fileName.split('/');
-    let ext = parts[parts.length - 1];
-    switch (ext.toLowerCase()) {
-        case 'm4v':
-        case 'avi':
-        case 'mpg':
-        case 'mp4':
-            return true;
-        default:
-            return false;
-    }
+    return parts[parts.length - 2] === "video";
 }
+
 
 function saveMessage(contact, newMessage, username) {
     let index = registeredUsers.findIndex((i) => (i.username === username));
@@ -40,6 +36,9 @@ function ChatInput({contact, setListMessages, username}) {
 
     const sendfile = (event) => {
         event.preventDefault();
+        if (!isLegalFile(event.target.files[0].type)){
+            return;
+        }
         let newItem = {sender: "client", type: "image", value: URL.createObjectURL(event.target.files[0])};
         if (isVideo(event.target.files[0].type)) {
             newItem.type = "video";

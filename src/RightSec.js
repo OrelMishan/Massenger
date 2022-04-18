@@ -2,7 +2,7 @@ import ChatNav from "./ChatNav";
 import ChatInput from "./ChatInput";
 import ChatBox from "./chatBox";
 
-function RightSec({contact, listMessages, setListMessage,username}) {
+function RightSec({contact, listMessages, setListMessage, username}) {
 
 
     let nav = <ChatNav name=""/>;

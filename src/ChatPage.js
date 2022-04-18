@@ -5,7 +5,7 @@ import {useState} from "react";
 
 function ChatPage({user}) {
     const [contact, setContact] = useState(null);
-    const [listMessages, setListMessage] = useState(null);
+    const [listMessages, setListMessage] = useState([]);
     return (
         <div className="chat-page-background">
             <RightSec contact={contact} listMessages={listMessages} setListMessage={setListMessage}
