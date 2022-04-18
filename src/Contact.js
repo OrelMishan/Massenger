@@ -17,6 +17,7 @@ function Contact({contact, setContact, setListMessage, prevContact, username, li
         }
     }
 
+
     return (
         <a className="list-group-item" id="transparent-bubble" onClick={() => {
             if (prevContact) {
@@ -29,7 +30,7 @@ function Contact({contact, setContact, setListMessage, prevContact, username, li
         }}>
             <div className="d-flex justify-content-between">
                 <img className="rounded-circle contact-pic"
-                     src={"face.jpg"}/>
+                     src={contact.photo}/>
 
 
             </div>

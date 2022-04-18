@@ -3,14 +3,21 @@ import registeredUsers from "./Users";
 
 function AddNewContact({closeModel, setContactList, username}) {
     const fileInput = useRef(null)
+    let urlPhoto = "face.jpg";
     const textInput = useRef(null);
     const addContact = () => {
-        let newContact = {contactName: textInput.current.value, lastMessageTime: "", messages: []}
+        let newContact = {contactName: textInput.current.value,photo:urlPhoto ,lastMessageTime: "", messages: []}
         setContactList(contactList => [...contactList, newContact]);
         let index = registeredUsers.findIndex((i) => (i.username === username));
         registeredUsers[index].data.push(newContact);
         closeModel(false)
     }
+
+    const addPhoto = (event) => {
+        event.preventDefault();
+        urlPhoto=URL.createObjectURL(event.target.files[0]);
+    }
+
     return (
         <div className="modelContainer">
             <div id="" className="shadow-lg p-3 mb-5 rounded modelBackground">
@@ -25,7 +32,7 @@ function AddNewContact({closeModel, setContactList, username}) {
 
                 <div className="input-group">
                     <div>
-                        <input type="file" accept="image/*" hidden={true} ref={fileInput}/>
+                        <input type="file" accept="image/*" hidden={true} ref={fileInput} onChange={addPhoto}/>
                         <button className="btn btn-primary" id="transparent-btn"
                                 onClick={() => {
                                     fileInput.current.click();
