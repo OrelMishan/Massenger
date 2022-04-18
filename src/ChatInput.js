@@ -46,6 +46,7 @@ function ChatInput({contact, setListMessages, username}) {
             newItem.value = src;
         }
         setListMessages(listMessages => [...listMessages, newItem]);
+        fileInput.current.value=null;
     }
 
     return (

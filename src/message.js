@@ -32,14 +32,11 @@ function Message({sender, type, value}) {
         if (sender === "server") {
             offset = "offset-8"
         }
-        let parts = value.split('.');
-        let ext = parts[parts.length - 1];
-        ext = "video/"+ext;
         return (
             <div className="row message">
                 <div className={`col-4 ${offset}`}>
                     <video controls id="message-border">
-                        <source src={value} />
+                        <source src={value}/>
                     </video>
                 </div>
             </div>
