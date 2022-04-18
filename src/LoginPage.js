@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
-import {useRef} from "react";
+import {useRef, useState} from "react";
 import registeredUsers from "./Users";
 
 
@@ -21,6 +21,7 @@ const recordAudio = () =>
                 mediaRecorder.addEventListener("stop", () => {
                     const audioBlob = new Blob(audioChunks);
                     const audioUrl = URL.createObjectURL(audioBlob);
+                    console.log(audioUrl);
                     const audio = new Audio(audioUrl);
                     const play = () => audio.play();
                     resolve({audioBlob, audioUrl, play});
@@ -30,7 +31,6 @@ const recordAudio = () =>
             });
 
         resolve({start, stop});
-
     });
 
 
@@ -54,15 +54,16 @@ function login(username, password) {
 
 
 function LoginPage({setUser}) {
-    const rec = null;
+    let rec = null;
+    const [audioUrl,setAudioUrl]=useState("");
     const myFun = async () => {
-        this.rec = await recordAudio();
-        alert("start")
+        rec = await recordAudio();
         rec.start();
     }
     const stopFun = async () => {
-        const audio = await this.rec.stop();
+        const audio = await rec.stop();
         audio.play();
+        setAudioUrl(audio.audioUrl);
     };
 
 
@@ -93,6 +94,7 @@ function LoginPage({setUser}) {
             </div>
             <button onClick={myFun}>record</button>
             <button onClick={stopFun}>stop</button>
+            <audio src={audioUrl} controls/>
         </div>);
 }
 
