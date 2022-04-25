@@ -13,16 +13,22 @@ function AddNewContact({closeModel, setContactList, username}) {
             lastMessage: {sender: "client", type: "text", value: ""},
             messages: []
         }
-        setContactList(contactList => [...contactList, newContact]);
-        let index = registeredUsers.findIndex((i) => (i.username === username));
-        registeredUsers[index].data.push(newContact);
-        closeModel(false)
+        let index = registeredUsers.findIndex((i) => (i.username === textInput.current.value));
+        if(index >= 0){
+            setContactList(contactList => [...contactList, newContact]);
+            index = registeredUsers.findIndex((i) => (i.username === username));
+            registeredUsers[index].data.push(newContact);
+            closeModel(false)
+        }else{
+            alert("Username does not exist, please try again")
+        }
+
     }
 
-    const addPhoto = (event) => {
-        event.preventDefault();
-        urlPhoto = URL.createObjectURL(event.target.files[0]);
-    }
+    // const addPhoto = (event) => {
+    //     event.preventDefault();
+    //     urlPhoto = URL.createObjectURL(event.target.files[0]);
+    // }
 
     return (
         <div className="modelContainer">
@@ -38,13 +44,13 @@ function AddNewContact({closeModel, setContactList, username}) {
 
                 <div className="input-group">
                     <div>
-                        <input type="file" accept="image/*" hidden={true} ref={fileInput} onChange={addPhoto}/>
-                        <button className="btn btn-primary" id="transparent-btn"
-                                onClick={() => {
-                                    fileInput.current.click();
-                                }}>
-                            <i className="bi bi-paperclip"/>
-                        </button>
+                        {/*<input type="file" accept="image/*" hidden={true} ref={fileInput} onChange={addPhoto}/>*/}
+                        {/*<button className="btn btn-primary" id="transparent-btn"*/}
+                        {/*        onClick={() => {*/}
+                        {/*            fileInput.current.click();*/}
+                        {/*        }}>*/}
+                        {/*    <i className="bi bi-paperclip"/>*/}
+                        {/*</button>*/}
                     </div>
                     <input type="text" className="form-control rounded" placeholder="Contact's Username"
                            ref={textInput}/>
