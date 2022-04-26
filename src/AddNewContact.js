@@ -5,9 +5,13 @@ function AddNewContact({closeModel, setContactList, username}) {
     const fileInput = useRef(null)
     const textInput = useRef(null);
     const addContact = () => {
-
+        if (username === textInput.current.value) {
+            textInput.current.value = "";
+            alert("Username does not valid, please try again");
+            return;
+        }
         let index = registeredUsers.findIndex((i) => (i.username === textInput.current.value));
-        if(index >= 0){
+        if (index >= 0) {
             let newContact = {
                 contactName: textInput.current.value,
                 photo: registeredUsers[index].photo,
@@ -15,12 +19,16 @@ function AddNewContact({closeModel, setContactList, username}) {
                 lastMessage: {sender: "client", type: "text", value: ""},
                 messages: []
             }
-
-            setContactList(contactList => [...contactList, newContact]);
             index = registeredUsers.findIndex((i) => (i.username === username));
+            if (registeredUsers[index].data.findIndex((i) => (i.contactName === textInput.current.value)) >= 0) {
+                textInput.current.value = "";
+                alert("Username already exist, please try again");
+                return;
+            }
+            setContactList(contactList => [...contactList, newContact]);
             registeredUsers[index].data.push(newContact);
             closeModel(false)
-        }else{
+        } else {
             alert("Username does not exist, please try again")
         }
 

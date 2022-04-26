@@ -12,13 +12,13 @@ function ChatBox({listMessages}) {
                     return <Message sender={message.sender} type={message.type} value={message.value} key={key}/>;
             }
         )
+        dataList.reverse();
     }
 
 
-
     return (
-        <div className="chat-box scrollbar"  ref={window}>
-            {dataList.reverse()}
+        <div className="chat-box scrollbar" ref={window}>
+            {dataList}
         </div>
     )
 }
