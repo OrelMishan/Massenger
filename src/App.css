@@ -137,6 +137,8 @@ a {
     width: 66%;
     padding-right: 2%;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .send-sec {

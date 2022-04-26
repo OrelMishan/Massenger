@@ -14,13 +14,11 @@ function ChatBox({listMessages}) {
         )
     }
 
-    const scrollToBottom = (event) => {
-        window.current.scrollTop=window.current.scrollHeight;
-    }
+
 
     return (
-        <div className="chat-box scrollbar" onLoad={scrollToBottom} ref={window}>
-            {dataList}
+        <div className="chat-box scrollbar"  ref={window}>
+            {dataList.reverse()}
         </div>
     )
 }
