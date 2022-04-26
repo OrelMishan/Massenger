@@ -3,18 +3,19 @@ import registeredUsers from "./Users";
 
 function AddNewContact({closeModel, setContactList, username}) {
     const fileInput = useRef(null)
-    let urlPhoto = "face.jpg";
     const textInput = useRef(null);
     const addContact = () => {
-        let newContact = {
-            contactName: textInput.current.value,
-            photo: urlPhoto,
-            lastMessageTime: "",
-            lastMessage: {sender: "client", type: "text", value: ""},
-            messages: []
-        }
+
         let index = registeredUsers.findIndex((i) => (i.username === textInput.current.value));
         if(index >= 0){
+            let newContact = {
+                contactName: textInput.current.value,
+                photo: registeredUsers[index].photo,
+                lastMessageTime: "",
+                lastMessage: {sender: "client", type: "text", value: ""},
+                messages: []
+            }
+
             setContactList(contactList => [...contactList, newContact]);
             index = registeredUsers.findIndex((i) => (i.username === username));
             registeredUsers[index].data.push(newContact);
