@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 import registeredUsers from "./Users";
 
 
@@ -27,6 +27,18 @@ function LoginPage({setUser}) {
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null)
+
+    const request = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: 'React POST Request Example'})
+    };
+    useEffect(  ()=>{
+        let q =   fetch("http://localhost:5108/api/Contacts/logout",request).then(ress=>ress.ok);
+        if (q)
+         console.log( "ok");
+    },[]);
+
 
     const check = (event) => {
         event.preventDefault();

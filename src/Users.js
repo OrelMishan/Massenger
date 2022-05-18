@@ -2,7 +2,7 @@ let registeredUsers = [{
     username: "Orel", password: "22222222", photo: "orel.jpg", nickname: "Orel", data: [{
         contactName: "David",
         photo: "face5.webp",
-        lastMessageTime: new Date().toLocaleString(),
+        TY: new Date().toLocaleString(),
         lastMessage: {sender: "server", type: "text", value: "Haha so funny!"},
         messages: [{sender: "client", type: "text", value: "Hey, how are you?"}, {
             sender: "server", type: "text", value: "I'm great, i'm in Paris"
