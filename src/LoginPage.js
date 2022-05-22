@@ -1,50 +1,55 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
 import {useEffect, useRef} from "react";
-import registeredUsers from "./Users";
 
 
-function checkIfRegistered(username, password) {
-    return registeredUsers.findIndex((i) => (i.username === username && i.password === password));
+async function checkIfRegistered(username, password) {
+    const params = {
+        username: username,
+        password: password
+    }
+    const request = {
+        method: 'POST',
+        mode:'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params)
+    };
+    let res = await fetch("http://localhost:5108/api/Contacts/login", request);
+    console.log(res.o)
+    return false;
 }
 
-function login(username, password) {
+async function login(username, password) {
     if (password.current.value.length < 8 || username.current.value.length === 0) {
         alert("Input is invalid!");
         return -1;
     }
     //after all checking..
 
-    let index = checkIfRegistered(username.current.value, password.current.value);
-    if (index >= 0) {
-        return index;
-    }
-    return -1;
+    return await checkIfRegistered(username.current.value, password.current.value);
 }
 
 
-function LoginPage({setUser}) {
+function LoginPage() {
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null)
 
-    const request = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({title: 'React POST Request Example'})
-    };
-    useEffect(  ()=>{
-        let q =   fetch("http://localhost:5108/api/Contacts/logout",request).then(ress=>ress.ok);
-        if (q)
-         console.log( "ok");
-    },[]);
+    // const request = {
+    //     method: 'POST',
+    //     headers: {'Content-Type': 'application/json'},
+    // };
+    //
+    // useEffect(() => {
+    //     fetch("http://localhost:5108/api/Contacts/logout", request).then(ress => ress.ok);
+    // }, []);
 
 
     const check = (event) => {
         event.preventDefault();
-        let user = login(username, password);
-        if (user >= 0) {
-            setUser(registeredUsers[user]);
+        if (login(username, password)) {
             nextPage.current.click();
         }
     }
