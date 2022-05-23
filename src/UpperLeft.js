@@ -1,13 +1,20 @@
 import AddNewContact from "./AddNewContact";
 import {useState} from "react";
 
-function UpperLeft({user, setContactList}) {
+async function UpperLeft({user, setContactList}) {
+    let userData = await fetch('http://localhost:5108/api/Contacts/user?username='+user,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    userData = await userData.json();
     const [openModel, setOpenModel] = useState(false);
     return (
         <div className="upper-left">
             <div className="sticky-sm-top big-text">
-                <img src={user.photo} className="rounded-circle my-photo" alt="not found image"/>
-                {user.nickname}
+                <img src={userData.photo} className="rounded-circle my-photo" alt="not found image"/>
+                {userData.name}
                 <button className="new-contact" onClick={() => {
                     setOpenModel(true);
                 }}>
@@ -15,7 +22,7 @@ function UpperLeft({user, setContactList}) {
                 </button>
             </div>
             {openModel &&
-                <AddNewContact closeModel={setOpenModel} setContactList={setContactList} username={user.username}/>}
+                <AddNewContact closeModel={setOpenModel} setContactList={setContactList} user={user}/>}
         </div>
 
     );

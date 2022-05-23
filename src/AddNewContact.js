@@ -1,34 +1,45 @@
 import {useRef} from "react";
-import registeredUsers from "./Users";
 
-function AddNewContact({closeModel, setContactList, username}) {
-    const fileInput = useRef(null)
+function AddNewContact({closeModel, setContactList, user}) {
     const textInput = useRef(null);
-    const addContact = () => {
-        if (username === textInput.current.value) {
+    const server = useRef(null);
+    const addContact = async () => {
+        if (user === textInput.current.value) {
             textInput.current.value = "";
             alert("Username does not valid, please try again");
             return;
         }
-        let index = registeredUsers.findIndex((i) => (i.username === textInput.current.value));
-        if (index >= 0) {
-            let newContact = {
-                contactName: textInput.current.value,
-                photo: registeredUsers[index].photo,
-                lastMessageTime: "",
-                lastMessage: {sender: "client", type: "text", value: ""},
-                messages: []
+        let res = await fetch('http://'+server.current.value+'/api/invitations',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({from:user,
+            to:textInput.current.value,
+            server:'localhost:5108'})
+        });
+        if (res.ok){
+            res = await fetch('http://localhost:5108/api/Contacts?username='+user,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({id:textInput.current.value,
+                name:textInput.current.value,
+                server:server.current.value})
+            });
+            if (res.ok){
+                res = await fetch('http://localhost:5108/api/Contacts?username='+user,{
+                method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json'
+                }});
+                setContactList(res.json());
+                closeModel(false);
             }
-            index = registeredUsers.findIndex((i) => (i.username === username));
-            if (registeredUsers[index].data.findIndex((i) => (i.contactName === textInput.current.value)) >= 0) {
-                textInput.current.value = "";
-                alert("Username already exist, please try again");
-                return;
-            }
-            setContactList(contactList => [...contactList, newContact]);
-            registeredUsers[index].data.push(newContact);
-            closeModel(false)
-        } else {
+            else alert("Username already exist, please try again");
+        }
+        else {
             alert("Username does not exist, please try again")
         }
 
@@ -63,6 +74,8 @@ function AddNewContact({closeModel, setContactList, username}) {
                     </div>
                     <input type="text" className="form-control rounded" placeholder="Contact's Username"
                            ref={textInput}/>
+                    <input type="text" className="form-control rounded" placeholder="Contact's Server"
+                           ref={server}/>
                     <button className="btn btn-primary big-text" type="submit" onClick={addContact}>Add
                     </button>
                 </div>

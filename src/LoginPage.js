@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
-import {useEffect, useRef} from "react";
+import {useRef, useState} from "react";
+import alert from "bootstrap/js/src/alert";
 
 
 async function checkIfRegistered(username, password) {
@@ -10,21 +11,19 @@ async function checkIfRegistered(username, password) {
     }
     const request = {
         method: 'POST',
-        mode:'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(params)
+        body: JSON.stringify(params),
     };
     let res = await fetch("http://localhost:5108/api/Contacts/login", request);
-    console.log(res.o)
-    return false;
+    return res.ok;
 }
 
 async function login(username, password) {
     if (password.current.value.length < 8 || username.current.value.length === 0) {
         alert("Input is invalid!");
-        return -1;
+        return false;
     }
     //after all checking..
 
@@ -32,39 +31,36 @@ async function login(username, password) {
 }
 
 
-function LoginPage() {
+function LoginPage({setUser}) {
     const username = useRef(null);
     const password = useRef(null);
-    const nextPage = useRef(null)
-
-    // const request = {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    // };
-    //
-    // useEffect(() => {
-    //     fetch("http://localhost:5108/api/Contacts/logout", request).then(ress => ress.ok);
-    // }, []);
-
-
-    const check = (event) => {
+    const nextPage = useRef(null);
+    let [error, setError] = useState(false);
+    const check = async (event) => {
         event.preventDefault();
-        if (login(username, password)) {
+        const isLog = await login(username, password)
+        if (isLog) {
+            setUser(username.current.value)
             nextPage.current.click();
+        } else {
+            setError(true);
+
         }
     }
 
     return (
         <div id="app" className="shadow log-reg-background">
-            <header>MASSEGER</header>
+            <header>MESSENGER</header>
 
             <Link to="/chat" ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
+            {error && <div className="text-danger">username or password wrong</div>}
             <div className="mb-3 mt-2">
                 <button type="button" className="btn btn-primary btn-sm shadow" onClick={check}>Login
                 </button>
                 <div id="register">Not registered? <Link to="/register">Click here</Link> to register</div>
+
             </div>
         </div>);
 }

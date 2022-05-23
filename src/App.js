@@ -12,8 +12,8 @@ function App() {
         <div className="chat-page-background">
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/"} element={<LoginPage/>}/>
-                    <Route path={"/register"} element={<RegisterPage/>}/>
+                    <Route path={"/"} element={<LoginPage setUser={setUser}/>} />
+                    <Route path={"/register"} element={<RegisterPage setUser={setUser} />}/>
                     <Route path={"/chat"} element={<ChatPage user={user}/>}/>
                 </Routes>
             </BrowserRouter>

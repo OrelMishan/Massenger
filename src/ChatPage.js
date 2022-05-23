@@ -1,15 +1,16 @@
 import LeftMenu from "./LeftMenu";
 import RightSec from "./RightSec";
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 
-function ChatPage({user}) {
+async function ChatPage({user}) {
     const [contact, setContact] = useState(null);
     const [listMessages, setListMessage] = useState([]);
+
     return (
         <div className="chat-page-background">
-            <RightSec contact={contact} listMessages={listMessages} setListMessage={setListMessage}
-                      username={user.username}/>
+            {/*<RightSec contact={contact} listMessages={listMessages} setListMessage={setListMessage}*/}
+            {/*          user={user}/>*/}
             <LeftMenu user={user} setContact={setContact} setListMessage={setListMessage} prevContact={contact}
                       listMessage={listMessages}/>
         </div>

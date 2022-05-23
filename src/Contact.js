@@ -1,5 +1,3 @@
-import registeredUsers from "./Users";
-
 function Contact({contact, setContact, setListMessage, prevContact, username, listMessage}) {
     const lastMessage = (message) => {
         if (message.type === "image") {
@@ -17,23 +15,21 @@ function Contact({contact, setContact, setListMessage, prevContact, username, li
 
     return (
         <a className="list-group-item" id="transparent-bubble" onClick={() => {
-            if (prevContact) {
-                let index = registeredUsers.findIndex((i) => (i.username === username));
-                let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === prevContact.contactName));
-                registeredUsers[index].data[contactIndex].messages = listMessage;
-            }
+            // if (prevContact) {
+            //     let index = registeredUsers.findIndex((i) => (i.username === username));
+            //     let contactIndex = registeredUsers[index].data.findIndex((i) => (i.contactName === prevContact.contactName));
+            //     registeredUsers[index].data[contactIndex].messages = listMessage;
+            // }
             setContact(contact);
             setListMessage(contact.messages);
         }}>
             <div className="d-flex justify-content-between">
                 <img className="rounded-circle contact-pic"
                      src={contact.photo}/>
-
-
             </div>
-            <h5 className="mb-1 big-text user-name">{contact.contactName}</h5>
-            <small className="text-muted date-text">{contact.lastMessageTime}</small>
-            {lastMessage(contact.lastMessage)}
+            <h5 className="mb-1 big-text user-name">{contact.name}</h5>
+            <small className="text-muted date-text">{contact.lastdate}</small>
+            {lastMessage(contact.last)}
             {/*<p className="mb-1 message-peak-text">{contact.messages[contact.messages.length-1].value}</p>*/}
         </a>
     )

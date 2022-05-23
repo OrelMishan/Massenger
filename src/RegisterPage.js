@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
 import {useRef, useState} from "react";
-import registeredUsers from "./Users";
 
 function checkValidation(username, password, verifyPassword, nickname) {
     if (username.length === 0 || password.length === 0 || nickname === 0 || verifyPassword !== password) {
@@ -16,7 +15,7 @@ function checkValidation(username, password, verifyPassword, nickname) {
     return true;
 }
 
-function RegisterPage() {
+function RegisterPage({setUser}) {
     const username = useRef(null);
     const password = useRef(null);
     const verifyPassword = useRef(null);
@@ -24,33 +23,20 @@ function RegisterPage() {
     const fileInput = useRef(null);
     const [image, setImage] = useState("");
     const nextPage = useRef(null);
-
+    const [error,setError] = useState(false);
     const showImage = (event) => {
         event.preventDefault();
         setImage(URL.createObjectURL(event.target.files[0]));
     }
 
-    const reg = (event) => {
+    const reg = async (event) => {
+
         event.preventDefault();
         if (checkValidation(username.current.value, password.current.value, verifyPassword.current.value, nickname.current.value)) {
-            // let newUser = {
-            //     username: username.current.value,
-            //     password: password.current.value,
-            //     data: [],
-            //     photo: "face.jpg",
-            //     nickname: username.current.value
-            // };
-            // if (image !== "") {
-            //     newUser.photo = image;
-            // }
-
-            // registeredUsers.push(newUser);
-            // setUser(newUser);
             const params = {
-                username:username.current.value,
+                id:username.current.value,
                 password:password.current.value,
-                nickname:username.current.value,
-                photo: null
+                name:username.current.value,
             }
             if (nickname.current.value !== "") {
                 params.nickname = nickname.current.value;
@@ -63,11 +49,12 @@ function RegisterPage() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(params)
             };
-            if (fetch("http://localhost:5108/api/Contacts/register",request).then(ress=>ress.ok)) {
-                alert("ddd");
+            let res = await fetch('http://localhost:5108/api/Contacts/register',request);
+            if (res.ok) {
+                setUser(username.current.value);
                 nextPage.current.click();
             }
-            else alert("failed request");
+            else setError(true);
         }
     }
     return (
@@ -83,6 +70,7 @@ function RegisterPage() {
                     <i className="bi bi-file-image"/>
                 </button>
             </div>
+            {error&&<div className="text-danger">Something wrong</div> }
             <div className="mb-3">
                 <button type="submit" id="button" className="btn btn-primary btn-sm shadow" onClick={reg}>Register
                 </button>
