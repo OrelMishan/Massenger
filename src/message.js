@@ -1,7 +1,7 @@
 function Message({sender, type, value}) {
     let offset = ""
     if (type === "text") {
-        if (sender === "server") {
+        if (!sender) {
             offset = "offset-6"
         }
         return (
@@ -15,7 +15,7 @@ function Message({sender, type, value}) {
         )
     }
     if (type === "record") {
-        if (sender === "server") {
+        if (sender === "false") {
             offset = "offset-7"
         }
         return (
@@ -27,7 +27,7 @@ function Message({sender, type, value}) {
         )
     }
     if (type === "image") {
-        if (sender === "server") {
+        if (sender === "false") {
             offset = "offset-10"
         }
         return (
@@ -41,7 +41,7 @@ function Message({sender, type, value}) {
         )
     }
     if (type === "video") {
-        if (sender === "server") {
+        if (sender === "false") {
             offset = "offset-8"
         }
         return (

@@ -9,12 +9,11 @@ function ChatBox({listMessages}) {
         // eslint-disable-next-line array-callback-return
         dataList = listMessages.map((message, key) => {
                 if (message.value !== "")
-                    return <Message sender={message.sender} type={message.type} value={message.value} key={key}/>;
+                    return <Message sender={message.sent} type={"text"} value={message.content}/>;
             }
         )
         dataList.reverse();
     }
-
 
     return (
         <div className="chat-box scrollbar" ref={window}>

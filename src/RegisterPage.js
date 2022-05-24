@@ -15,7 +15,8 @@ function checkValidation(username, password, verifyPassword, nickname) {
     return true;
 }
 
-function RegisterPage({setUser}) {
+function RegisterPage() {
+    let userid = {id: ""};
     const username = useRef(null);
     const password = useRef(null);
     const verifyPassword = useRef(null);
@@ -23,7 +24,7 @@ function RegisterPage({setUser}) {
     const fileInput = useRef(null);
     const [image, setImage] = useState("");
     const nextPage = useRef(null);
-    const [error,setError] = useState(false);
+    const [error, setError] = useState(false);
     const showImage = (event) => {
         event.preventDefault();
         setImage(URL.createObjectURL(event.target.files[0]));
@@ -34,9 +35,9 @@ function RegisterPage({setUser}) {
         event.preventDefault();
         if (checkValidation(username.current.value, password.current.value, verifyPassword.current.value, nickname.current.value)) {
             const params = {
-                id:username.current.value,
-                password:password.current.value,
-                name:username.current.value,
+                id: username.current.value,
+                password: password.current.value,
+                name: username.current.value,
             }
             if (nickname.current.value !== "") {
                 params.nickname = nickname.current.value;
@@ -49,17 +50,16 @@ function RegisterPage({setUser}) {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(params)
             };
-            let res = await fetch('http://localhost:5108/api/Contacts/register',request);
+            let res = await fetch('http://localhost:5108/api/contacts/register', request);
             if (res.ok) {
-                setUser(username.current.value);
+                userid.id = username.current.value;
                 nextPage.current.click();
-            }
-            else setError(true);
+            } else setError(true);
         }
     }
     return (
         <div id="app" className="shadow log-reg-background">
-            <Link to="/chat" ref={nextPage}/>
+            <Link to="/chat" state={userid} ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
             <InputSec text="Verify password" type="password" id={verifyPassword}/>
@@ -70,7 +70,7 @@ function RegisterPage({setUser}) {
                     <i className="bi bi-file-image"/>
                 </button>
             </div>
-            {error&&<div className="text-danger">Something wrong</div> }
+            {error && <div className="text-danger">Something wrong</div>}
             <div className="mb-3">
                 <button type="submit" id="button" className="btn btn-primary btn-sm shadow" onClick={reg}>Register
                 </button>

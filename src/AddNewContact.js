@@ -6,40 +6,44 @@ function AddNewContact({closeModel, setContactList, user}) {
     const addContact = async () => {
         if (user === textInput.current.value) {
             textInput.current.value = "";
-            alert("Username does not valid, please try again");
+            alert("Username is not valid, please try again");
             return;
         }
-        let res = await fetch('http://'+server.current.value+'/api/invitations',{
+        let res = await fetch('http://'+server.current.value+'/api/invitations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({from:user,
-            to:textInput.current.value,
-            server:'localhost:5108'})
+            body: JSON.stringify({
+                from: user,
+                to: textInput.current.value,
+                server: 'localhost:5108'
+            })
         });
-        if (res.ok){
-            res = await fetch('http://localhost:5108/api/Contacts?username='+user,{
+        if (res.ok) {
+            res = await fetch('http://localhost:5108/api/contacts?username=' + user, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body:JSON.stringify({id:textInput.current.value,
-                name:textInput.current.value,
-                server:server.current.value})
+                body: JSON.stringify({
+                    id: textInput.current.value,
+                    name: textInput.current.value,
+                    server: server.current.value
+                })
             });
-            if (res.ok){
-                res = await fetch('http://localhost:5108/api/Contacts?username='+user,{
-                method: 'GET',
+            if (res.ok) {
+                res = await fetch('http://localhost:5108/api/contacts?username=' + user, {
+                    method: 'GET',
                     headers: {
-                    'Content-Type': 'application/json'
-                }});
-                setContactList(res.json());
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await res.json();
+                setContactList(data);
                 closeModel(false);
-            }
-            else alert("Username already exist, please try again");
-        }
-        else {
+            } else alert("Username already exist, please try again");
+        } else {
             alert("Username does not exist, please try again")
         }
 

@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import InputSec from "./InputSec";
 import {useRef, useState} from "react";
-import alert from "bootstrap/js/src/alert";
 
 
 async function checkIfRegistered(username, password) {
@@ -16,7 +15,7 @@ async function checkIfRegistered(username, password) {
         },
         body: JSON.stringify(params),
     };
-    let res = await fetch("http://localhost:5108/api/Contacts/login", request);
+    let res = await fetch("http://localhost:5108/api/contacts/login", request);
     return res.ok;
 }
 
@@ -31,7 +30,8 @@ async function login(username, password) {
 }
 
 
-function LoginPage({setUser}) {
+function LoginPage() {
+    let userid={id:""};
     const username = useRef(null);
     const password = useRef(null);
     const nextPage = useRef(null);
@@ -40,19 +40,16 @@ function LoginPage({setUser}) {
         event.preventDefault();
         const isLog = await login(username, password)
         if (isLog) {
-            setUser(username.current.value)
+            userid.id = username.current.value;
             nextPage.current.click();
         } else {
             setError(true);
-
         }
     }
-
     return (
         <div id="app" className="shadow log-reg-background">
             <header>MESSENGER</header>
-
-            <Link to="/chat" ref={nextPage}/>
+            <Link to="/chat" state={userid} ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
             {error && <div className="text-danger">username or password wrong</div>}
@@ -60,7 +57,6 @@ function LoginPage({setUser}) {
                 <button type="button" className="btn btn-primary btn-sm shadow" onClick={check}>Login
                 </button>
                 <div id="register">Not registered? <Link to="/register">Click here</Link> to register</div>
-
             </div>
         </div>);
 }
