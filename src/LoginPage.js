@@ -48,7 +48,7 @@ function LoginPage() {
     }
     return (
         <div id="app" className="shadow log-reg-background">
-            <header>MESSENGER</header>
+            <header>Orel and David Messenger App</header>
             <Link to="/chat" state={userid} ref={nextPage}/>
             <InputSec text="Username" type="text" id={username}/>
             <InputSec text="Password" type="password" id={password}/>
@@ -58,6 +58,7 @@ function LoginPage() {
                 </button>
                 <div id="register">Not registered? <Link to="/register">Click here</Link> to register</div>
             </div>
+            <div className= "text-center"> Enjoyed the app? Please leave your opinion and <a href="https://localhost:7169/">rate us!</a></div>
         </div>);
 }
 
